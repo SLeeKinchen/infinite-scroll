@@ -39,7 +39,6 @@ function displayPhotos() {
         imageContainer.appendChild(item);
     });
 }
-
 // Get photos from Unsplash API
 async function getPhotos() {
     try {
@@ -50,6 +49,14 @@ async function getPhotos() {
         // Catch Error Here
     }
 }
+
+// Check to see if scrolling near bottom of page, Load More Photos
+window.addEventListener('scroll', () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
+        getPhotos();
+        console.log('load more');
+    }
+});
 
 // On Load
 getPhotos();
